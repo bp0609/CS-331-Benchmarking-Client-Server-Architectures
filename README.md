@@ -67,6 +67,8 @@ This script generates and saves plots comparing the performance of all three ser
 
 **Execution Time vs. Number of Clients**
 ![Execution Time Graph](./Part2/results/benchmark_plot.png)
+
+**Execution Time(in log scale) vs. Number of Clients**
 ![Execution Time Graph](./Part2/results/benchmark_plot_logScale.png)
 
 **Comparison of Multi-Process and Multi-Threaded Servers**
