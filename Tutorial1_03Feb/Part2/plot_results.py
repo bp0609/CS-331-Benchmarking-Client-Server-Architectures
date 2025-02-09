@@ -1,0 +1,41 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Load benchmark data
+data1 = pd.read_csv("./results/single_process_server.txt")
+data2 = pd.read_csv("./results/multi_process_server.txt")
+data3 = pd.read_csv("./results/multi_threaded_server.txt")
+
+plt.figure(figsize=(8, 5))
+plt.plot(data1["Clients"], data1["Execution Time (s)"], marker="o", linestyle="-", color="r", label="Single-Process Server")
+plt.plot(data2["Clients"], data2["Execution Time (s)"], marker="o", linestyle="-", color="g", label="Multi-Process Server")
+plt.plot(data3["Clients"], data3["Execution Time (s)"], marker="o", linestyle="-", color="b", label="Multi-Threaded Server")
+plt.xlabel("Number of Concurrent Clients")
+plt.ylabel("Execution Time (Latency) (s)")
+plt.title("Server Performance Benchmark")
+plt.grid(True,which="both", linestyle="--", linewidth=0.5)
+plt.legend()
+plt.savefig("./results/benchmark_plot.png")
+
+plt.figure(figsize=(8, 5))
+plt.plot(data1["Clients"], data1["Execution Time (s)"], marker="o", linestyle="-", color="r", label="Single-Process Server")
+plt.plot(data2["Clients"], data2["Execution Time (s)"], marker="o", linestyle="-", color="g", label="Multi-Process Server")
+plt.plot(data3["Clients"], data3["Execution Time (s)"], marker="o", linestyle="-", color="b", label="Multi-Threaded Server")
+plt.xlabel("Number of Concurrent Clients")
+plt.ylabel("Execution Time (Latency) (s) Log Scale")
+plt.title("Server Performance Benchmark")
+plt.yscale("log")
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.legend()
+plt.savefig("./results/benchmark_plot_logScale.png")
+
+plt.figure(figsize=(8, 5))
+plt.plot(data2["Clients"], data2["Execution Time (s)"], marker="o", linestyle="-", color="g", label="Multi-Process Server")
+plt.plot(data3["Clients"], data3["Execution Time (s)"], marker="o", linestyle="-", color="b", label="Multi-Threaded Server")
+plt.xlabel("Number of Concurrent Clients")
+plt.ylabel("Execution Time (Latency) (s)")
+plt.title("Server Performance Benchmark")
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.legend()
+plt.savefig("./results/benchmark_plot_multi_threaded_vs_multi_process.png")
+plt.show()
